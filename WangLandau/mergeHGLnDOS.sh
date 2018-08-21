@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #array=$(ls | grep -a 'final_HGLnDOS')
-array=(../data/WangLandau/*final_HGLnDOS*)
+array=(../data/*final_HGLnDOS*)
 
 echo $array
 # get length of an array
