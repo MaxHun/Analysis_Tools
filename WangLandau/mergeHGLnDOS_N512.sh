@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #array=$(ls | grep -a 'final_HGLnDOS')
-array=(data/N32_windows/*final_HGLnDOS*)
+array=(data/N512_windows/*final_HGLnDOS*)
 
 echo $array
 # get length of an array
@@ -23,7 +23,7 @@ done
 echo "Die Schleife ist zu Ende"
 
 name=${array[0]}".dat"
-name=${name#data/N32_windows/}
+name=${name#data/N512_windows/}
 name=${name%Solvent*}"final_HGLnDOS_shifted.dat"
 
 #datname="out.dat" ${array[0]%.bfm*}"_HGLnDOS_shifted.dat"
