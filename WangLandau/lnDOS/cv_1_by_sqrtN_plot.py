@@ -5,7 +5,7 @@ import re
 import sys 
 import matplotlib
 
-matplotlib.rcParams.update({'font.size': 20})
+matplotlib.rcParams.update({'font.size': 15})
 
 File="invsqrtn_T_theta.dat"
 
@@ -21,11 +21,11 @@ plt.plot(x,m*x+n,color="k",label="Fitfunktion:"+r" $T_{\theta}=$"+
                                  "${0:.3f}$".format(m)+r"$\cdot\frac{1}{\sqrt{N}}+$"+
                                  "${0:.3f}$".format(n))
 plt.title("Temperatur des coil-globule-\nPhasenübergangs für verschiedene Kettenlängen",
-          fontsize=15)
-plt.ylim(0.85,1.55)
+          fontsize=18)
+plt.ylim(0.9,1.55)
 plt.xlim(0.025,0.2)
 plt.ylabel(r"$T_{\theta}$")
 plt.xlabel(r"$\frac{1}{\sqrt{N}}$")
-plt.legend(loc='best')
+plt.legend(loc='lower center')
 plt.show()
 

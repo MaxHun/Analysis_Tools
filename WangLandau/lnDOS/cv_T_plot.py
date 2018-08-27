@@ -11,6 +11,7 @@ file = "cv_merged.dat"
 N = np.loadtxt(file, unpack=True)[0]
 cv = np.loadtxt(file, unpack=True)[2]
 T = np.loadtxt(file, unpack=True)[1]
+eps = np.loadtxt(file, unpack=True)[3]
 k=int(0.0)
 
 #plt.figure(figsize=(20,10))
@@ -25,7 +26,7 @@ for n in [32.0,64.0,96.0,128.0,256.0,512.0]: #später ncoh die anderen N ergänz
     Tplot = np.array([])
     for i in np.arange(N.size):
         #print(N[i])
-        if N[i] == n:
+        if N[i] == n and eps[i]==-0.4:
             cvplot=np.append(cvplot,cv[i])
             Tplot=np.append(Tplot,T[i])
 
@@ -49,8 +50,9 @@ for n in [32.0,64.0,96.0,128.0,256.0,512.0]: #später ncoh die anderen N ergänz
     #ax.legend(prop={'size': 20})
     k+=1
 f.suptitle(r"Wärmekapazitäten unterschiedlich langer Einzelketten,"+
-           " auf Maximum normiert")
-plt.subplots_adjust(wspace=0.09, hspace=0.05, top=0.92)
+           " auf Maximum normiert\n"+
+           r"bei gleicher Wechselwirkungsenergie $\epsilon=-0.4$")
+plt.subplots_adjust(wspace=0.09, hspace=0.05, top=0.9)
 f.legend(loc='center right', prop={'size': 20})
 plt.show()
 
