@@ -29,14 +29,19 @@ for n in [32.0,64.0,96.0,128.0,256.0]: #später ncoh die anderen N ergänzen!
 
     plt.subplot(1,1,1)
     ax=plt.subplot(1,1,1)
-    plt.xlabel(r"$\epsilon$")
-    plt.ylabel(r"$\frac{R_g^2}{N}$",rotation=0)
+    plt.xlabel(r"$\epsilon$",fontsize=25)
+    plt.ylabel(r"$\frac{R_g^2}{N}$",rotation=0,fontsize=25)
+    plt.ylim(0,4)
     ax.yaxis.set_label_coords(-0.05,0.5)
     plt.plot(epsplot,Rg2plot, label="N={}".format(int(n)),
-             color=colors[k],marker=markers[k])
+             color=colors[k],marker=markers[k],ms=10)
     plt.plot(epsplot,Rg2plot,alpha=0.6, color=colors[k])
+    ax.tick_params(left=True,right=True,bottom=True,top=True,which='major',length=10)
+    ax.tick_params(right=True, direction='in',which='both')
+    ax.tick_params(left=True,right=True,bottom=True,top=True,which='minor',length=5)
     plt.title(r"Verhalten des Gyrationsradius bei verschiedenen"+ 
-              r" Kettenlängen $N$ und Wechselwirkungsenergien $\epsilon$")
+              r" Kettenlängen $N$ und Wechselwirkungsenergien $\epsilon$",
+              position=(0.5,1.01))
     plt.legend(prop={'size': 20})
     k+=1
 plt.show()

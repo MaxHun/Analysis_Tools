@@ -1,7 +1,11 @@
 #!/bin/bash
 
 #array=$(ls | grep -a 'final_HGLnDOS')
-array=(data/N32_windows/*final_HGLnDOS*)
+array=(data/N32_windows/*final_HGLnDOS.dat)
+for i in 0 1 2 3 4
+do
+	echo ${array[$i]}
+done
 
 echo $array
 # get length of an array

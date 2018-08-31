@@ -17,8 +17,8 @@ f=plt.figure(figsize=(20,10))
 colors = np.array(["b","r","g","c","m","y","k"])
 markers = np.array(["o","v","s","+","*","p","x"])
 linestyles = np.array([":","-.","--","-"])
-ls_dashes = np.array([[1,1],[1,3,1,3],[],[2,3],[2,2,10,2],[]])
-for e in [-0.1,-0.2,-0.4,-0.8]: #später ncoh die anderen N ergänzen!
+ls_dashes = np.array([[3,6,3,6,3,18],[1,1],[12,6,3,6,3,6],[2,4,2,4,2,8],[2,2,10,2],[]])
+for e in [-0.2,-0.4,-0.8]: #später ncoh -0.1 hinzufügen! Auch unten!
     lndosplot = np.array([])
     Eplot = np.array([])
     for i in np.arange(N.size):
@@ -46,14 +46,14 @@ for e in [-0.1,-0.2,-0.4,-0.8]: #später ncoh die anderen N ergänzen!
     #          r" Wechselwirkungsenergien $\epsilon$ "+
     #          "\nbei konstanter Kettenlänge"+
     #          r" $N=32$")
-    plt.grid()
+    #plt.grid()
     #plt.legend(prop={'size': 20})
     k+=1
 
 k=0
 
 ## es folgt einfach die obere Schleife nochmal, diesmal ohne Teilen durch e!
-for e in [-0.1,-0.2,-0.4,-0.8]: #später ncoh die anderen N ergänzen!
+for e in [-0.2,-0.4,-0.8]: #später ncoh die -0.1 ergänzen!
     lndosplot = np.array([])
     Eplot = np.array([])
     for i in np.arange(N.size):
@@ -76,10 +76,14 @@ for e in [-0.1,-0.2,-0.4,-0.8]: #später ncoh die anderen N ergänzen!
             dashes=ls_dashes[k],lw=3)
     plt.xlim(-1.5,0)
     plt.ylim(-60,60)
-    plt.grid()
+    #plt.grid()
     #plt.legend(prop={'size': 20})
     k+=1
-
+for i in [1,2]:
+    ax = plt.subplot(1,2,i)
+    ax.tick_params(left=True,right=True,bottom=True,top=True,which='major',length=10)
+    ax.tick_params(right=True, direction='in',which='both')
+    ax.tick_params(left=True,right=True,bottom=True,top=True,which='minor',length=5)
 f.suptitle(r"Zustandsdichten der linearen Kette für unterschiedliche"+
            r" Wechselwirkungsenergien $\epsilon$ "+
            "\nbei konstanter Kettenlänge"+
