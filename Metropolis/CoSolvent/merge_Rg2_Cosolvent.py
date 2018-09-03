@@ -42,8 +42,8 @@ for File in files:
                     eps = np.append(eps, float(File[25:28]))
             
         Rg2mean = np.append(Rg2mean,np.loadtxt(File, unpack=True)[0])
-c_ges = c
-c_cos = c - 0.976562
+c_ges = c/1000
+c_cos = c_ges - 0.000976562
 eps = eps /-1000
 
 #print(Rg2mean,c,eps)
@@ -55,7 +55,7 @@ c_ges, eps, Rg2mean, c_cos = c_ges[sort], eps[sort], Rg2mean[sort], c_cos[sort]
 
 data = np.transpose(np.array([c_ges,c_cos,Rg2mean,eps]))
 #print(data)
-np.savetxt("Rg2_c.dat", data, delimiter= "            ", fmt="%07.3f",
+np.savetxt("Rg2_c_CPU.dat", data, delimiter= "            ", fmt="%07.3f",
             header="c_gesamt       c_cosolvent            Rg2mean      epsilon ")
 
 
