@@ -16,7 +16,7 @@ fontsize_label=28
 
 matplotlib.rcParams.update({'font.size': 20})
 
-file = "cv_merged.dat"
+file = "cv_merged_WL.dat"
 [N,T,cv,eps]=np.loadtxt(file, unpack=True)
 #N = np.loadtxt(file, unpack=True)[0]
 #cv = np.loadtxt(file, unpack=True)[2]
@@ -72,10 +72,11 @@ for n in [32.0,64.0,96.0,128.0,256.0,512.0]: #später ncoh die anderen N ergänz
 #f.suptitle(r"Wärmekapazitäten unterschiedlich langer Einzelketten,"+
 #           " auf Maximum normiert\n"+
 #           r"bei gleicher Wechselwirkungsenergie $\epsilon=-0.4$")
-plt.subplots_adjust(wspace=0.09, hspace=0.05, top=0.98,bottom=0.09,
+    plt.subplots_adjust(wspace=0.09, hspace=0.05, top=0.98,bottom=0.09,
                     left=0.06,right=0.875)
-plt.yticks(plt.yticks()[0][::2])
-plt.xticks(plt.xticks()[0][::2])
+    plt.ylim(0,1.1)
+    plt.yticks([0,0.2,0.4,0.6,0.8,1])#plt.yticks()[0][::2])
+    plt.xticks([0,1,2,3])       #plt.xticks()[0][::2])
 f.legend(loc='center right', prop={'size': fontsize})
 
 for i in np.arange(len(sys.argv)):

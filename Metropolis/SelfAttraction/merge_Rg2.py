@@ -42,7 +42,7 @@ N,eps, Rg2mean = N[sort], eps[sort], Rg2mean[sort]
 
 
 data = np.transpose(np.array([N,Rg2mean,eps]))
-np.savetxt("Rg2_merged.dat", data, delimiter= "     ", fmt="%-1.3f",
+np.savetxt("Rg2_merged_Metropolis.dat", data, delimiter= "     ", fmt="%-1.3f",
             header="N            Rg2mean      epsilon ")
 
 

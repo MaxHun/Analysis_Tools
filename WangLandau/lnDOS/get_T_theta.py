@@ -7,7 +7,7 @@ import matplotlib
 
 matplotlib.rcParams.update({'font.size': 20})
 
-file = "cv_merged.dat"
+file = "cv_merged_WL.dat"
 N = np.loadtxt(file, unpack=True)[0]
 cv = np.loadtxt(file, unpack=True)[2]
 T = np.loadtxt(file, unpack=True)[1]

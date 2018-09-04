@@ -57,7 +57,7 @@ N,T,cv,eps = N[sort], T[sort], cv[sort], eps[sort]
 data = np.transpose(np.array([N,T,cv,eps]))
 
 #print(data)
-np.savetxt("cv_merged.dat", data, delimiter= "     ", fmt="%-1.3f",
+np.savetxt("cv_merged_WL.dat", data, delimiter= "     ", fmt="%-1.3f",
             header="N            T      cv(T)    epsilon")
 
 

@@ -41,9 +41,9 @@ plt.plot(x,m*x+n,color="k",ls="--",label="Fitfunktion:"+r" $T_{\theta}=$"+
                                  "${0:.3f}$".format(n))
 #plt.title("Temperatur des coil-globule-\nPhasenübergangs für verschiedene Kettenlängen",
 #          fontsize=18)
-plt.ylim(0.9,1.6)
+plt.ylim(0.9,1.7)
 plt.xlim(0.0,0.2)
-plt.yticks(plt.yticks()[0][::2])
+plt.yticks([0.9,1.1,1.3,1.5,1.7])
 yt = ax.get_yticks() 
 yt=np.append(yt,n)
 
@@ -52,7 +52,7 @@ ytl[-1]=r"$T_\theta^\infty$"
 ax.set_yticks(yt)
 ax.set_yticklabels(ytl)
 
-plt.text(0.128,1.4,r"$\epsilon_\theta=\frac{\epsilon}{T_\theta^\infty}\simeq 0,253$",
+plt.text(0.128,1.4,r"$\epsilon_\theta=\frac{\epsilon}{T_\theta^\infty}\simeq 0,250$",
          fontsize=fontsize)
 
 plt.xticks([0,0.05,0.1,0.15,0.2])
@@ -64,5 +64,6 @@ plt.subplots_adjust(left=0.07,top=0.99, right=0.97,bottom=0.09)
 for i in np.arange(len(sys.argv)):
     if sys.argv[i] == "png":
         plt.savefig("../../../ownCloud/SS18/BA/Vortrag/Bilder/cv_1_by_sqrtN_plot.png")
+
 plt.show()
 

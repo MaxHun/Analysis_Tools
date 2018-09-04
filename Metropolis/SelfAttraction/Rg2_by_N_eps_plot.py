@@ -10,7 +10,7 @@ matplotlib.rcParams.update({'font.size': 20})
 plt.rc('text', usetex=True)
 #plt.rc('text.latex', preamble=r'\usepackage[utf8]{luainputenc}\usepackage[ngerman]{babel}')
 plt.rc('font', family='Open Sans')
-file = "Rg2_merged.dat"
+file = "Rg2_merged_Metropolis.dat"
 N = np.loadtxt(file, unpack=True)[0]
 Rg2 = np.loadtxt(file, unpack=True)[1]
 eps = np.loadtxt(file, unpack=True)[2]
@@ -18,7 +18,7 @@ k=int(0.0)
 plt.figure(figsize=(20,10))
 colors = np.array(["b","r","g","c","m","y","k"])
 markers = np.array(["o","v","s","+","*","p","x"])
-for n in [32.0,64.0,96.0,128.0,256.0]: #später ncoh die anderen N ergänzen!
+for n in [32.0,64.0,96.0,128.0,256.0,512.0]: #später ncoh die anderen N ergänzen!
     Rg2plot = np.array([])
     epsplot = np.array([])
     for i in np.arange(N.size):
@@ -26,7 +26,6 @@ for n in [32.0,64.0,96.0,128.0,256.0]: #später ncoh die anderen N ergänzen!
         if N[i] == n:
             Rg2plot=np.append(Rg2plot,Rg2[i]/n)
             epsplot=np.append(epsplot,eps[i])
-
     sort = np.argsort(epsplot)
     Rg2plot, epsplot = Rg2plot[sort], epsplot[sort]
 
