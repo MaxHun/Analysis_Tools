@@ -12,6 +12,12 @@ fontsize=25
 fontsize_label=28
 #plt.rc('text.latex', preamble=r'\usepackage[utf8]{luainputenc}\usepackage[ngerman]{babel}')
 plt.rc('font', family='Open Sans')
+
+colors = np.array(["b","r","g","c","m","y","k"])
+markers = np.array(["o","v","s","+","*","p","x"])
+linestyles = np.array([":","-.","--","-"])
+ls_dashes = np.array([[3,3,1,1],[1,1],[1,3,3,1],[2,4,2,4,2,8],[2,2,10,2],[]])
+
 file = "Rg2_merged_Metropolis.dat"
 file_WL = "Rg2_merged_WL.dat"
 N = np.loadtxt(file, unpack=True)[0]
@@ -56,7 +62,7 @@ for n in [32.0,64.0,96.0,128.0,256.0,512.0]: #später ncoh die anderen N ergänz
     
     ##Plotbefehle:
     plt.plot(-0.4/Tplot_WL,Rg2plot_WL/Nplot_WL,label="WL: $N={}$".format(str(int(Nplot_WL))),
-            color=colors[k],alpha=0.6)
+            color=colors[k],dashes=ls_dashes[k],alpha=0.6,lw=3)
     plt.plot(epsplot,Rg2plot/n, label="ME: $N={}$".format(int(n)),
              color=colors[k],marker=markers[k],ms=15,ls="",fillstyle='none')
     #plt.plot(epsplot,Rg2plot,alpha=0.6, color=colors[k])
@@ -68,7 +74,7 @@ for n in [32.0,64.0,96.0,128.0,256.0,512.0]: #später ncoh die anderen N ergänz
     #plt.title(r"Verhalten des Gyrationsradius bei verschiedenen"+ 
     #          r" Kettenlängen $N$ und Wechselwirkungsenergien $\epsilon$",
     #          position=(0.5,1.01))
-    plt.legend(prop={'size': fontsize},loc='best')
+    plt.legend(prop={'size': fontsize},loc='best',ncol=3)
     k+=1
 
 eps_theta=-0.2524
@@ -76,7 +82,7 @@ plt.axvline(x=eps_theta,color="k",ls="--")
 plt.xticks(list(plt.xticks()[0]) + [eps_theta])
 ax.set_xticklabels(["$-1$","$-0,8$","$-0.6$","$-0.4$",
                     "$-0.2$","$0$",r"$\epsilon_\theta$"])
-plt.text(-0.39,3,r"$\epsilon_\theta\simeq -0.252$",fontsize=fontsize)
+plt.text(-0.20,1,r"$\epsilon_\theta\simeq -0.252$",fontsize=fontsize)
 minor_locator_x = AutoMinorLocator(2)
 minor_locator_y = AutoMinorLocator(2)
 ax.xaxis.set_minor_locator(minor_locator_x)

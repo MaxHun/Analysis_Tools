@@ -6,7 +6,10 @@ import sys
 import matplotlib
 from matplotlib.ticker import AutoMinorLocator
 
-matplotlib.rcParams.update({'font.size': 20})
+fontsize=25
+fontsize_label=28
+
+matplotlib.rcParams.update({'font.size': fontsize})
 plt.rc('text', usetex=True)
 #plt.rc('text.latex', preamble=r'\usepackage[utf8]{luainputenc}\usepackage[ngerman]{babel}')
 plt.rc('font', family='Open Sans')
@@ -16,9 +19,10 @@ Rg2 = np.loadtxt(file, unpack=True)[1]
 eps = np.loadtxt(file, unpack=True)[2]
 k=int(0.0)
 plt.figure(figsize=(20,10))
-colors = np.array(["b","r","g","c","m","y","k"])
+colors = np.array(["b","r","g","c","m","darkorange","k"])
 markers = np.array(["o","v","s","+","*","p","x"])
-for n in [32.0,64.0,96.0,128.0,256.0,512.0]: #später ncoh die anderen N ergänzen!
+ls_dashes = np.array([[3,3,1,1],[1,1],[1,3,3,1],[2,4,2,4,2,8],[2,2,10,2],[]])
+for n in [32.0,64.0,96.0,128.0,256.0,512.0]: 
     Rg2plot = np.array([])
     epsplot = np.array([])
     for i in np.arange(N.size):
@@ -31,9 +35,9 @@ for n in [32.0,64.0,96.0,128.0,256.0,512.0]: #später ncoh die anderen N ergänz
 
     plt.subplot(1,1,1)
     ax=plt.subplot(1,1,1)
-    plt.xlabel(r"$\epsilon$",fontsize=25)
-    plt.ylabel(r"$\frac{R_g^2}{N}$",rotation=0,fontsize=25)
-    plt.ylim(0,4)
+    plt.xlabel(r"$\epsilon$",fontsize=fontsize_label)
+    plt.ylabel(r"$\frac{R_g^2}{N}$",rotation=0,fontsize=fontsize_label)
+    plt.ylim(0,4.5)
     plt.xlim(-1,0)
     ax.yaxis.set_label_coords(-0.05,0.5)
     plt.plot(epsplot,Rg2plot, label="N={}".format(int(n)),
@@ -45,7 +49,7 @@ for n in [32.0,64.0,96.0,128.0,256.0,512.0]: #später ncoh die anderen N ergänz
     #plt.title(r"Verhalten des Gyrationsradius bei verschiedenen"+ 
     #          r" Kettenlängen $N$ und Wechselwirkungsenergien $\epsilon$",
     #          position=(0.5,1.01))
-    plt.legend(prop={'size': 20,},loc='best')
+    plt.legend(prop={'size': fontsize},loc='best',ncol=3)
     k+=1
 
 eps_theta=-0.2524

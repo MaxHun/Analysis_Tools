@@ -14,7 +14,7 @@ fontsize=25
 fontsize_label=28
 
 
-matplotlib.rcParams.update({'font.size': 25})
+matplotlib.rcParams.update({'font.size': fontsize})
 
 File="invsqrtn_T_theta.dat"
 
@@ -52,7 +52,7 @@ ytl[-1]=r"$T_\theta^\infty$"
 ax.set_yticks(yt)
 ax.set_yticklabels(ytl)
 
-plt.text(0.128,1.4,r"$\epsilon_\theta=\frac{\epsilon}{T_\theta^\infty}\simeq 0,250$",
+plt.text(0.128,1.4,r"$\epsilon_\theta=\frac{\epsilon}{T_\theta^\infty}\simeq 0,254$",
          fontsize=fontsize)
 
 plt.xticks([0,0.05,0.1,0.15,0.2])
