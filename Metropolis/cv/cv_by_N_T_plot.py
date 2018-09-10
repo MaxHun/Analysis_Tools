@@ -9,9 +9,7 @@ from matplotlib.ticker import (MultipleLocator, FormatStrFormatter,
 
 plt.rc('text', usetex=True)
 plt.rc('font', family='Open Sans')
-matplotlib.rcParams['text.latex.preamble'] = [
-    r'\usepackage{amsmath}',
-    r'\usepackage{amssymb}',r"\usepackage{nicefrac}"]
+
 fontsize=25
 fontsize_label=28
 
@@ -33,8 +31,10 @@ file_ME = "cv_merged_ME.dat"
 k=int(0.0)
 
 #plt.figure(figsize=(20,10))
-f, axarr = plt.subplots(2,3, sharex=True, sharey=True,figsize=(20,10))
-axarr = axarr.flatten()
+f, ax = plt.subplots(1,1, figsize=(20,10))
+axarr = np.array([])
+for  i in np.arange(6):
+    axarr=np.append(axarr, ax)
 colors = np.array(["b","r","g","c","m","darkorange","k"])
 markers = np.array(["o","v","s","+","*","p","x"])
 linestyles = np.array([":","-.","--","-"])
@@ -83,18 +83,18 @@ for n in [32.0,64.0,96.0,128.0,256.0,512.0]:
     for i in [3,4,5]:
         axarr[i].set_xlabel(r"$T$",fontsize=fontsize_label)
     for i in [0,3]:
-        axarr[i].set_ylabel(r"$\nicefrac{c_V(T)}{c_{V,max}}$",fontsize=fontsize_label)
-        axarr[i].yaxis.set_label_coords(-0.09,0.5)
+        axarr[i].set_ylabel(r"$\frac{c_V(T)}{N}$",fontsize=fontsize_label)
+        #axarr[i].yaxis.set_label_coords(-0.09,0.5)
     #ax.yaxis.set_label_coords(-0.05,0.5)
    # plt.plot(Tplot,cvplot, label="N={}".format(int(n)),
    #          color=colors[k],marker=markers[k])
     WL_only=True
     for i in np.arange(len(sys.argv)):
         if sys.argv[i] == "me":
-            ax.plot(Tplot_ME,cvplot_ME/cvplot.max(),color=colors[k],marker=markers[k],
+            ax.plot(Tplot_ME,cvplot_ME/n,color=colors[k],marker=markers[k],
                     fillstyle='none', ms=15, ls="", label="ME: $N={}$".format(int(n))) 
             WL_only=False
-    ax.plot(Tplot,cvplot/cvplot.max(),alpha=1, color=colors[k],
+    ax.plot(Tplot,cvplot/n,alpha=1, color=colors[k],
             dashes=ls_dashes[k],label="WL: $N={}$".format(int(n)),lw=3)
     ax.set_xlim(0,3)
     ax.set_ylim(0,1.25)
@@ -111,15 +111,23 @@ for n in [32.0,64.0,96.0,128.0,256.0,512.0]:
 #           r"bei gleicher Wechselwirkungsenergie $\epsilon=-0.4$")
     plt.subplots_adjust(wspace=0.09, hspace=0.05, top=0.98,bottom=0.09,
                     left=0.06,right=0.83)
-    plt.yticks([0,0.2,0.4,0.6,0.8,1])  #plt.yticks()[0][::2])
+    #plt.yticks([0,0.2,0.4,0.6,0.8,1])  #plt.yticks()[0][::2])
     plt.xticks([0,1,2,3])  #plt.xticks()[0][::2])
-    plt.ylim(0,1.1)
+    plt.ylim(0,7)
 f.legend(loc='center right', prop={'size': fontsize})
-
+image=False
 for i in np.arange(len(sys.argv)):
-    if sys.argv[i] == "png" and WL_only==True:
-        plt.savefig("../../../ownCloud/SS18/BA/Vortrag/Bilder/cV_T_plot_WL.png")
-    elif sys.argv[i] == "png" and WL_only==False:
-        plt.savefig("../../../ownCloud/SS18/BA/Vortrag/Bilder/cV_T_plot_ME+WL.png")
+    if sys.argv[i] == "im":
+        img_l=plt.imread("../../../ownCloud/SS18/BA/Vortrag/Bilder/schlechtes_Loesungsmittel.png")
+        img_r=plt.imread("../../../ownCloud/SS18/BA/Vortrag/Bilder/gutes_Loesungsmittel.png")
+        ax.imshow(img_l, aspect='auto', extent=(0.35,0.85,3,5.5))
+        ax.imshow(img_r, aspect='auto', extent=(2.0,2.5,3,5.5))
+        image=True
+for i in np.arange(len(sys.argv)):
+    if sys.argv[i] == "png" and WL_only==True and image==True:
+        plt.savefig("../../../ownCloud/SS18/BA/Vortrag/Bilder/cV_by_N_T_plot_WL_Bild.png")
+    elif sys.argv[i] == "png" and WL_only==False and image==True:
+        break
+        plt.savefig("../../../ownCloud/SS18/BA/Vortrag/Bilder/cV_by_N_T_plot_ME+WL_Bild.png")
 plt.show()
 

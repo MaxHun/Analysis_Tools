@@ -4,18 +4,29 @@ import os
 import re
 import sys 
 import matplotlib
+from matplotlib.ticker import (MultipleLocator, FormatStrFormatter,
+                               AutoMinorLocator)
+fontsize=25
+fontsize_label=28
 
-matplotlib.rcParams.update({'font.size': 20})
+
+matplotlib.rcParams.update({'font.size': fontsize})
 plt.rc('text', usetex=True)
 plt.rc('font', family='serif')
-file = "Rg2_c_GPU.dat"
+for i in np.arange(len(sys.argv)):
+    if sys.argv[i]=="cpu":
+        file = "Rg2_c_CPU.dat"
+        what = "CPU"
+    elif sys.argv[i] == "gpu":
+        file = "Rg2_c_GPU.dat"
+        what = "GPU"
 c_ges = np.loadtxt(file, unpack=True)[0]
 c_cos = np.loadtxt(file, unpack=True)[1]
 Rg2 = np.loadtxt(file, unpack=True)[2]
 eps = np.loadtxt(file, unpack=True)[3]
 k=int(0.0)
-plt.figure(figsize=(20,10))
-colors = np.array(["b","r","g","c","m","y","k"])
+F=plt.figure(figsize=(20,10))
+colors = np.array(["b","r","g","c","m","darkorange","k"])
 markers = np.array(["o","v","s","+","*","p","x"])
 for e in [-0.4,-0.5,-0.6,-0.7,-0.8,-0.9]: 
     Rg2plot = np.array([])
@@ -47,7 +58,7 @@ for e in [-0.4,-0.5,-0.6,-0.7,-0.8,-0.9]:
     ax=plt.subplot(1,1,1)
     ax.grid()
     plt.xlabel(r"$c$",fontsize=25)
-    plt.ylabel(r"$R_g^2$",rotation=0,fontsize=25)
+    plt.ylabel(r"$R_g^2$",fontsize=25)
     #plt.xlim(10**-3,10**0)
     ax.yaxis.set_label_coords(-0.05,0.5)
     plt.semilogx(cplot,Rg2plot, label=r"$\epsilon={}$".format(float(e)),
@@ -60,14 +71,24 @@ for e in [-0.4,-0.5,-0.6,-0.7,-0.8,-0.9]:
   #            +  r"Gyrationsradius der Einzelkette bei variabler Gesamt-"
    #           + "Konzentration $c$ \n für verschiedene Wechselwirkungsenergien"
     #          + r" $\epsilon$")
-    plt.legend(prop={'size': 20})
+    plt.ylim(0,1100)
+    plt.xlim(10**-3,0.16)
+    ax.tick_params(axis='x', pad=10)
+    ax.tick_params(axis='y', pad=10)
+    #minor_locator_x = AutoMinorLocator(2)
+    minor_locator_y = AutoMinorLocator(2)
+    #ax.xaxis.set_minor_locator(minor_locator_x)
+    ax.yaxis.set_minor_locator(minor_locator_y)
     k+=1
 
+F.legend(prop={'size': fontsize},loc="upper center",ncol=6)
 #plt.yticks(plt.yticks()[0][::2])
-plt.subplots_adjust(left=0.07,bottom=0.09,right=0.95)
+plt.subplots_adjust(left=0.07,right=0.98,top=0.915,bottom=0.09)
 for i in np.arange(len(sys.argv)):
-    if sys.argv[i] == "png":
+    if sys.argv[i] == "png" and what=="GPU":
         plt.savefig("../../../ownCloud/SS18/BA/Vortrag/Bilder/Rg2_c_plot_GPU.png")
+    elif sys.argv[i] == "png" and what=="CPU":
+        plt.savefig("../../../ownCloud/SS18/BA/Vortrag/Bilder/Rg2_c_plot_CPU.png")
         
 plt.show()
 

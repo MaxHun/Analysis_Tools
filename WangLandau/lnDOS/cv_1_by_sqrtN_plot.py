@@ -60,7 +60,7 @@ ax.set_xticklabels(["$0$","$0.05$","$0.1$","$0.15$","$0.2$"])
 plt.ylabel(r"$T_{\theta}$",fontsize=fontsize)
 plt.xlabel(r"$\frac{1}{\sqrt{N}}$",fontsize=fontsize)
 plt.legend(loc='lower center',prop={'size':fontsize})
-plt.subplots_adjust(left=0.07,top=0.99, right=0.97,bottom=0.09)
+plt.subplots_adjust(left=0.07,top=0.985, right=0.97,bottom=0.09)
 for i in np.arange(len(sys.argv)):
     if sys.argv[i] == "png":
         plt.savefig("../../../ownCloud/SS18/BA/Vortrag/Bilder/cv_1_by_sqrtN_plot.png")

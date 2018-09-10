@@ -3,6 +3,10 @@ from matplotlib.ticker import (MultipleLocator, FormatStrFormatter,
 matplotlib.rcParams.update({'font.size': 25})
 plt.rc('text', usetex=True)
 plt.rc('font', family='Open Sans')
+matplotlib.rcParams['text.latex.preamble'] = [
+    r'\usepackage{amsmath}',
+    r'\usepackage{amssymb}',r"\usepackage{nicefrac}"]
+
 
 colors = np.array(["b","r","g","c","m","darkorange","k"])
 markers = np.array(["o","v","s","+","*","p","x"])
@@ -16,8 +20,10 @@ ax.tick_params(left=True,right=True,bottom=True,top=True,which='major',length=10
 ax.tick_params(right=True, direction='in',which='both')    ax.tick_params(left=True,right=True,bottom=True,top=True,which='minor',length=5)
 
 plt.xlabel(r"$c$",fontsize=25)
-plt.ylabel(r"$R_g^2$",rotation=0,fontsize=25)
-plt.legend(prop={'size': 20})
+plt.ylabel(r"$R_g^2$",rotation=0,fontsize=fontsize)
+plt.legend(prop={'size': fontsize})
+
+
 
 ms=15
 
