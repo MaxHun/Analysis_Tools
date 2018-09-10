@@ -102,34 +102,37 @@ plt.axvline(x=eps_theta,color="k",ls="--")
 plt.xticks(list(plt.xticks()[0]) + [eps_theta])
 ax.set_xticklabels(["$-1$","$-0,8$","$-0.6$","$-0.4$",
                     "$-0.2$","$0$",r"$\epsilon_\theta$"])
-plt.text(-0.2,1,r"$\epsilon_\theta\simeq {0:.3f}$".format(eps_theta),fontsize=fontsize)
+plt.text(-0.38,3,r"$\epsilon_\theta\simeq {0:.3f}$".format(eps_theta),
+        fontsize=fontsize_label, bbox=dict(facecolor='none', edgecolor='black', pad=10.0))
 minor_locator_x = AutoMinorLocator(2)
 minor_locator_y = AutoMinorLocator(2)
 ax.xaxis.set_minor_locator(minor_locator_x)
 ax.yaxis.set_minor_locator(minor_locator_y)
 plt.yticks(plt.yticks()[0][::2]) # jeden zweiten Tick löschen
 plt.subplots_adjust(left=0.07,right=0.98,top=0.98,bottom=0.09)
-im=False
+save=False
 for i in np.arange(len(sys.argv)):
     if sys.argv[i] == "im":
         plt.plot(epsplot[12],Rg2plot[12]/512,color="k",marker=markers[k-1],ms=15)
         img = plt.imread(
             '../../../ownCloud/SS18/BA/Vortrag/Bilder/N512_E-0.58_Perlenkette_1.png')
         ax.imshow(img, aspect='auto',extent=(-0.8,-0.4,1,4))
-        plt.text(-0.18, 0.5,r"\textbf{gestreckt}")
+        plt.text(-0.18, 0.5,r"\textbf{gequollen}",fontsize=fontsize_label)
         plt.savefig("../../../ownCloud/SS18/BA/Vortrag/Bilder/Rg2_by_N_eps_ME_snapshot_plot.png",dpi=300)
-        im =True
+        save =True
     elif sys.argv[i] == "png":
-        plt.text(-0.18, 0.5,r"\textbf{gestreckt}")
-        plt.text(-0.7,2.5,r"\textbf{kollabiert}")
+        plt.text(-0.18, 0.5,r"\textbf{gequollen}",fontsize=fontsize_label)
+        plt.text(-0.7,2.5,r"\textbf{kollabiert}",fontsize=fontsize_label)
         plt.savefig("../../../ownCloud/SS18/BA/Vortrag/Bilder/Rg2_by_N_eps_ME_plot.png",dpi=300)
+        save=True
     elif sys.argv[i] == "pngwl":
-        plt.text(-0.18, 0.5,r"\textbf{gestreckt}")
-        plt.text(-0.7,2.5,r"\textbf{kollabiert}")
+        plt.text(-0.18, 0.5,r"\textbf{gequollen}",fontsize=fontsize_label)
+        plt.text(-0.7,2.5,r"\textbf{kollabiert}",fontsize=fontsize_label)
         plt.savefig("../../../ownCloud/SS18/BA/Vortrag/Bilder/Rg2_by_N_eps_ME+WL_plot.png",dpi=300)
-if im==False:
-    plt.text(-0.18, 0.5,r"\textbf{gestreckt}")
-    plt.text(-0.7,2.5,r"\textbf{kollabiert}")
+        save=True
+if save==False:
+    plt.text(-0.18, 0.5,r"\textbf{gequollen}",fontsize=fontsize_label)
+    plt.text(-0.7,2.5,r"\textbf{kollabiert}",fontsize=fontsize_label)
 
 plt.show()
 

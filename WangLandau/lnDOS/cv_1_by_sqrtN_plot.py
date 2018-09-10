@@ -6,6 +6,8 @@ import sys
 import matplotlib
 from matplotlib.ticker import (MultipleLocator, FormatStrFormatter,
                                AutoMinorLocator)
+import matplotlib.patches as mpatch
+
 plt.rc('text', usetex=True)
 plt.rc('font', family='Open Sans')
 
@@ -52,8 +54,8 @@ ytl[-1]=r"$T_\theta^\infty$"
 ax.set_yticks(yt)
 ax.set_yticklabels(ytl)
 
-plt.text(0.128,1.4,r"$\epsilon_\theta=\frac{\epsilon}{T_\theta^\infty}\simeq 0,254$",
-         fontsize=fontsize)
+plt.text(0.128,1.4,r"$\epsilon_\theta=\frac{\epsilon}{T_\theta^\infty}\simeq 0.254$",
+         fontsize=fontsize_label, bbox=dict(facecolor='none', edgecolor='none', pad=18), va='bottom')
 
 plt.xticks([0,0.05,0.1,0.15,0.2])
 ax.set_xticklabels(["$0$","$0.05$","$0.1$","$0.15$","$0.2$"])
@@ -61,6 +63,23 @@ plt.ylabel(r"$T_{\theta}$",fontsize=fontsize)
 plt.xlabel(r"$\frac{1}{\sqrt{N}}$",fontsize=fontsize)
 plt.legend(loc='lower center',prop={'size':fontsize})
 plt.subplots_adjust(left=0.07,top=0.985, right=0.97,bottom=0.09)
+
+###EXPERIMENT###
+
+rectangles = {r"" : mpatch.Rectangle((0.1255,1.39), 0.033,0.08,facecolor="none",edgecolor="k")}
+
+for r in rectangles:
+    ax.add_artist(rectangles[r])
+    rx, ry = rectangles[r].get_xy()
+    cx = rx + rectangles[r].get_width()/2.0
+    cy = ry + rectangles[r].get_height()/2.0
+
+    ax.annotate(r, (cx, cy), color='k', weight='bold',
+                fontsize=fontsize_label, ha='center', va='center')
+###ENDE EXPERIMENT###
+
+
+
 for i in np.arange(len(sys.argv)):
     if sys.argv[i] == "png":
         plt.savefig("../../../ownCloud/SS18/BA/Vortrag/Bilder/cv_1_by_sqrtN_plot.png")
