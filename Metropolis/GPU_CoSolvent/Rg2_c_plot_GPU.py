@@ -31,14 +31,14 @@ for i in np.arange(len(sys.argv)):
     elif sys.argv[i] == "gpulongexp":
         file = "Rg2_c_GPU_long.dat"
         what = "GPU_long_exp"
-        xmax = 0.6
+        xmax = 1#0.6
         #change colors etc to match with other plots:
         colors = np.array(["saddlebrown","b","darkslategray","mediumvioletred","r","darkorange","k"])
         markers = np.array(["^","o","P","X","v","d","D"])
     elif sys.argv[i] == "gpulong":
         file = "Rg2_c_GPU_long.dat"
         what = "GPU_long"
-        xmax = 0.6
+        xmax = 1#0.6
         #change colors etc to match with other plots:
         colors = np.array(["b","darkslategray","mediumvioletred","r","darkorange","k"])
         markers = np.array(["o","P","X","v","d","D"])
@@ -139,8 +139,8 @@ for i in np.arange(len(sys.argv)):
     elif sys.argv[i] == "png" and what=="CPU":
         plt.savefig("../../../ownCloud/SS18/BA/Vortrag/Bilder/Rg2_c_plot_CPU.png")
     elif sys.argv[i] == "png" and what=="GPU_long":
-        plt.savefig("../../../ownCloud/SS18/BA/Vortrag/Bilder/Rg2_c_plot_GPU_long.png")
+        plt.savefig("../../../ownCloud/SS18/BA/Vortrag/Bilder/Rg2_c_plot_GPU_long.png",dpi=300)
     elif sys.argv[i] == "png" and what=="GPU_long_exp":       
-        plt.savefig("../../../ownCloud/SS18/BA/Vortrag/Bilder/Rg2_c_plot_GPU_long_exp.png")
+        plt.savefig("../../../ownCloud/SS18/BA/Vortrag/Bilder/Rg2_c_plot_GPU_long_exp.png",dpi=300)
 plt.show()
 
