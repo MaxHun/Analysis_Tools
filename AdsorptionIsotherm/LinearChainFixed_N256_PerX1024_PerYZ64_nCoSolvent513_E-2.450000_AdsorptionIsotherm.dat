@@ -1,0 +1,26 @@
+# 
+# registered features: 
+# 
+# FeatureMoleculesIO
+# 	Number of monomers: 769
+# 	max connectivity: 2
+# FeatureBox
+# FeatureBondset<FastBondset>
+# FeatureAttributes
+# FeatureFixedMonomers
+# FeatureLattice<unsigned char>
+# FeatureExcludedVolumeSc<FeatureLattice<unsigned char> >
+# FeatureNNInteractionSc<FeatureLattice>
+# FeatureBoltzmann
+# 
+# not registered features: 
+# 
+# 
+# File produced by analyzer AnalyzerAdsorptionIsotherm
+# Analyze AdsorptionIsotherm
+# NrDensity c=0.00146675
+# Number CoSolvency=513
+# 
+# epsilon	<U>	<U²>	<cV>	<nContacts>	<nContacts/nContacts,max>	<nContacts/4nCoSolvent>	<nCoSolvent>	<nCoS In NNShell>	<(nCoS In NNShell)²>	var(nCoS In NNShell)	<(nCoS In NNShell)/nCoSolvent>	<cAll>	<cCoSolvent>
+
+-2.45	-3994.43	1.5964e+07	8552.84	1630.38	0.397266	0.794531	513	410.635	168710	88.8777	0.800457	0.00146675	0.00097847	

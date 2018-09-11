@@ -18,10 +18,11 @@ ls_dashes = np.array([[3,3,1,1],[1,1],[1,3,3,1],[2,4,2,4,2,8],[2,2,10,2],[]])
 
 matplotlib.rcParams.update({'font.size': fontsize})
 plt.rc('text', usetex=True)
-#plt.rc('text.latex', preamble=r'\usepackage[utf8]{luainputenc}\usepackage[ngerman]{babel}')
+plt.rc('text.latex', preamble=r'\usepackage[utf8]{luainputenc}\usepackage[ngerman]{babel}')
 plt.rc('font', family='Open Sans')
 
 files=glob.glob("merge_n*.dat")
+files.sort()
 #print(files)
 k=0
 f, ax = plt.subplots(1,1,figsize=(20,10))
@@ -39,18 +40,30 @@ for File in files:
             nc = int(File[8:11])
         except:
             nc = int(File[8:10])
-    epsplot = np.loadtxt(File, unpack=True)[0]
+    epsplot = -np.loadtxt(File, unpack=True)[0]
     phiplot = np.loadtxt(File, unpack=True)[5]
-    ax.plot(-epsplot,phiplot,label=r"$N_c={}$".format(nc),color=colors[k],dashes=ls_dashes[k],
-            lw=0,ls="", marker=markers[k])
+    ax.plot(epsplot,phiplot,label=r"$N_c={}$".format(nc),
+            color=colors[k],dashes=ls_dashes[k],
+            lw=0,ls="", marker=markers[k],ms=15)
     ax.set_xlabel(r"$-\epsilon$",fontsize=fontsize_label)
     ax.set_ylabel(r"$\phi$",fontsize=fontsize_label)
     k+=1
-
+    for n in np.arange(len(sys.argv)):
+        if sys.argv[n]=="dat":
+            data = np.transpose(np.array([phiplot,epsplot]))
+            np.savetxt("phi_eps_Nc{}.dat".format(nc), data, delimiter= "     ", fmt="%-1.3f",
+                       header="phi            epsilon")
     #try to fit the data:
-    popt, pcov = curve_fit(ai, -epsplot, phiplot)
-    plt.plot(-epsplot, ai(-epsplot, *popt), label="fit")
+    popt, pcov = curve_fit(ai, epsplot, phiplot)
+    #plt.plot(-epsplot, ai(-epsplot, *popt), label="fit")
 
+ax.tick_params(left=True,right=True,bottom=True,top=True,which='major',length=10)
+ax.tick_params(right=True, direction='in',which='both')    
+ax.tick_params(left=True,right=True,bottom=True,top=True,which='minor',length=5)
+minor_locator_x = AutoMinorLocator(2)
+minor_locator_y = AutoMinorLocator(2)
+ax.xaxis.set_minor_locator(minor_locator_x)
+ax.yaxis.set_minor_locator(minor_locator_y)
 #ax.set_xticklabels(["$-1$","$-0,8$","$-0.6$","$-0.4$",
 #                    "$-0.2$","$0$",r"$\epsilon_\theta$"])
 
@@ -61,9 +74,11 @@ ax.xaxis.set_minor_locator(minor_locator_x)
 #plt.yticks(plt.yticks()[0][::2]) # jeden zweiten Tick löschen
 plt.xticks([0,2,4,6,8])
 ax.set_xlim(0,8)
+ax.set_ylim(0,1)
+plt.subplots_adjust(left=0.07,right=0.98,top=0.98,bottom=0.09)
+ax.legend(loc='upper left', prop={'size': fontsize})
 for i in np.arange(len(sys.argv)):
     if sys.argv[i] == "png":
         plt.savefig("../../ownCloud/SS18/BA/Vortrag/Bilder/AI_plot.png")
-ax.legend(loc='lower right', prop={'size': fontsize})
 plt.show()
 
