@@ -54,7 +54,7 @@ ytl[-1]=r"$T_\theta^\infty$"
 ax.set_yticks(yt)
 ax.set_yticklabels(ytl)
 
-plt.text(0.128,1.4,r"$\epsilon_\theta=\frac{\epsilon}{T_\theta^\infty}\simeq 0.254$",
+plt.text(0.128,1.4,r"$\epsilon_\theta=\frac{\epsilon}{T_\theta^\infty}\simeq -0.254$",
          fontsize=fontsize_label, bbox=dict(facecolor='none', edgecolor='none', pad=18), va='bottom')
 
 plt.xticks([0,0.05,0.1,0.15,0.2])
@@ -66,7 +66,7 @@ plt.subplots_adjust(left=0.07,top=0.985, right=0.97,bottom=0.09)
 
 ###EXPERIMENT###
 
-rectangles = {r"" : mpatch.Rectangle((0.1255,1.39), 0.033,0.08,facecolor="none",edgecolor="k")}
+rectangles = {r"" : mpatch.Rectangle((0.1255,1.39), 0.035,0.08,facecolor="none",edgecolor="k")}
 
 for r in rectangles:
     ax.add_artist(rectangles[r])

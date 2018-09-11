@@ -6,6 +6,8 @@ import sys
 import matplotlib
 from matplotlib.ticker import (MultipleLocator, FormatStrFormatter,
                                AutoMinorLocator)
+from matplotlib.colors import LogNorm
+from matplotlib import colors, cm
 fontsize=25
 fontsize_label=28
 
@@ -81,15 +83,16 @@ for e in eps_array:
 
     plt.subplot(1,1,1)
     ax=plt.subplot(1,1,1)
-    ax.grid()
+    #ax.grid()
     plt.xlabel(r"$c$",fontsize=25)
     plt.ylabel(r"$R_g^2$",fontsize=25)
     #plt.xlim(10**-3,10**0)
     ax.yaxis.set_label_coords(-0.05,0.5)
     if e==-0.35:
         plt.semilogx(cplot,Rg2plot, label=r"$\epsilon_{}={}$".format("{PC}",float(e)),
-             color=colors[k%len(colors)],marker=markers[k%len(markers)],basex=10,ms=15)
-        plt.semilogx(cplot,Rg2plot,alpha=1, color=colors[k%len(colors)],basex=10, lw=5)
+             color=colors[k%len(colors)],marker=markers[k%len(markers)],basex=10,ms=15
+             ,lw=5,ls="--")
+        #plt.semilogx(cplot,Rg2plot,alpha=1, color=colors[k%len(colors)],basex=10, lw=5, ls="--")
     else:
         plt.semilogx(cplot,Rg2plot, label=r"$\epsilon={}$".format(float(e)),
              color=colors[k%len(colors)],marker=markers[k%len(markers)],basex=10,ms=15)
@@ -111,6 +114,22 @@ for e in eps_array:
     ax.yaxis.set_minor_locator(minor_locator_y)
     k+=1
 
+#xt = ax.get_xticks()
+#xt=np.append(xt,0.5)
+#
+#xtl=xt.tolist()
+#xtl[-1]=r"$5\cdot 10^{-1}$"
+#ax.set_xticks(xt)
+#ax.set_xticklabels([r"$10**-3$",r"$10**-2$",r"$10**-1$",r"$5*10^{-1}$"])
+#plt.xlim(10**-3,xmax)
+#ax.tick_params(axis='x', pad=10)
+
+if what=="GPU_long_exp":
+    img = plt.imread('explicit_solvent_sketch.png')
+    #ax.imshow(img, aspect='auto',extent=(0.002,0.008,100,500),norm=LogNorm(vmin=0.01, vmax=1))
+    #norm = colors.LogNorm(img.mean() + 0.5 * img.std(), img.max(), clip='True')
+    #plt.imshow(img, cmap=cm.gray, norm=norm, origin="lower")
+
 F.legend(prop={'size': fontsize},loc="upper center",ncol=6)
 #plt.yticks(plt.yticks()[0][::2])
 plt.subplots_adjust(left=0.07,right=0.98,top=0.915,bottom=0.09)
@@ -119,6 +138,9 @@ for i in np.arange(len(sys.argv)):
         plt.savefig("../../../ownCloud/SS18/BA/Vortrag/Bilder/Rg2_c_plot_GPU.png")
     elif sys.argv[i] == "png" and what=="CPU":
         plt.savefig("../../../ownCloud/SS18/BA/Vortrag/Bilder/Rg2_c_plot_CPU.png")
-        
+    elif sys.argv[i] == "png" and what=="GPU_long":
+        plt.savefig("../../../ownCloud/SS18/BA/Vortrag/Bilder/Rg2_c_plot_GPU_long.png")
+    elif sys.argv[i] == "png" and what=="GPU_long_exp":       
+        plt.savefig("../../../ownCloud/SS18/BA/Vortrag/Bilder/Rg2_c_plot_GPU_long_exp.png")
 plt.show()
 
