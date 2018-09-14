@@ -1,0 +1,53 @@
+\documentclass[
+ paper=A4,pagesize=automedia,fontsize=12pt,
+ BCOR=15mm,DIV=22,
+ twoside,headinclude,footinclude=false,
+ ngerman,fleqn,             % fleqn = linksbündige Ausrichtung von Formeln
+ bibtotocnumbered,          % Literaturverz. im Inhaltsverz. eintragen
+ liststotoc,                % Abbildungsverz. im Inhaltsverz. eintragen
+ listsleft,                 % Abbildungsverz. an der längsten Nummer ausrichten
+ pointlessnumbers,          % kein Punkt nach Überschriftsnummerierung
+ cleardoublepage=empty      % Vakatseiten ohne Paginierung
+]{scrbook}
+\setlength\parindent{0em}
+
+% Kodierung, Schrift und Sprache auswählen
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+% damit man Text aus dem PDF korrekt rauskopieren kann
+\usepackage{cmap}
+% Layout: Kopf-/Fußzeilen, anderthalbfacher Zeilenabstand
+\usepackage{scrpage2} \pagestyle{scrheadings}
+                      \clearscrheadfoot
+                      \ihead{\headmark}\ohead{\pagemark}
+                      \automark[subsection]{section}
+                      \setheadsepline{0.5pt}
+\usepackage{setspace} \onehalfspacing
+\deffootnote{1em}{1em}{\textsuperscript{\thefootnotemark }}
+% Grafiken, Tabellen, Mathematikumgebungen
+\usepackage{graphicx,xcolor}
+\usepackage{tabularx}
+\usepackage{amsmath,amsfonts,amssymb}
+% Darstellung von Fließumgebungen
+\usepackage{flafter,afterpage}
+\usepackage[section]{placeins}
+\usepackage[margin=8mm,font=small,labelfont=bf,format=plain]{caption}
+\usepackage[margin=8mm,font=small,labelfont=bf,format=plain]{subcaption}
+
+\numberwithin{equation}{chapter}
+\numberwithin{figure}{chapter}
+\numberwithin{table}{chapter}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Ab hier ist Platz für eigene Ergänzungen (Pakete, Befehle, etc.)
+%\usepackage{natbib}
+%\usepackage{babelbib}
+\DeclareUnicodeCharacter{2212}{-}
+\newcommand{\gq}[1]{\glq#1\grq}
+\newcommand{\gqq}[1]{\glqq#1\grqq}
+\newcommand{\eq}[1]{`#1'}
+\newcommand{\eqq}[1]{``#1''}
+\usepackage{nicefrac}
+\usepackage[style=alphabetic,backend=biber]{biblatex}
+\addbibresource{bachref.bib}
