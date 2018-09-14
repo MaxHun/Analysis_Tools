@@ -44,7 +44,7 @@ for File in files:
     phiplot = np.loadtxt(File, unpack=True)[5]
     ax.plot(epsplot,phiplot,label=r"$N_c={}$".format(nc),
             color=colors[k],dashes=ls_dashes[k],
-            lw=0,ls="", marker=markers[k],ms=15)
+            lw=4,ls="-")#, marker=markers[k],ms=15)
     ax.set_xlabel(r"$-\epsilon$",fontsize=fontsize_label)
     ax.set_ylabel(r"$\phi$",fontsize=fontsize_label)
     k+=1
@@ -79,6 +79,6 @@ plt.subplots_adjust(left=0.07,right=0.98,top=0.98,bottom=0.09)
 ax.legend(loc='upper left', prop={'size': fontsize})
 for i in np.arange(len(sys.argv)):
     if sys.argv[i] == "png":
-        plt.savefig("../../ownCloud/SS18/BA/Vortrag/Bilder/AI_plot.png")
+        plt.savefig("../../ownCloud/SS18/BA/Vortrag/Bilder/AI_phi_plot.png")
 plt.show()
 

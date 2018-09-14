@@ -23,4 +23,4 @@
 # 
 # epsilon	<U>	<U²>	<cV>	<nContacts>	<nContacts/nContacts,max>	<nContacts/4nCoSolvent>	<nCoSolvent>	<nCoS In NNShell>	<(nCoS In NNShell)²>	var(nCoS In NNShell)	<(nCoS In NNShell)/nCoSolvent>	<cAll>	<cCoSolvent>
 
--6	-24234.5	5.87533e+08	219786	4039.09	0.984184	0.984184	1026	1009.78	1.02004e+06	381.544	0.984191	0.00244522	0.00195694	
+-6	-24332.7	5.92363e+08	281857	4055.45	0.988171	0.988171	1026	1013.87	1.02843e+06	489.318	0.988179	0.00244522	0.00195694	

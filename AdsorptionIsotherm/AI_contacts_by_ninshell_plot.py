@@ -45,7 +45,7 @@ for File in files:
     nconplot = np.loadtxt(File, unpack=True)[4] # Anzahl der Kontakte
     ax.plot(epsplot,nconplot/nisplot,label=r"$N_c={}$".format(nc),
             color=colors[k],dashes=ls_dashes[k],
-            lw=0,ls="", marker=markers[k],ms=15)
+            lw=4,ls="-")#, marker=markers[k],ms=15)
     ax.set_xlabel(r"$-\epsilon$",fontsize=fontsize_label)
     ax.set_ylabel(r"$\frac{n_{Contacts}}{n_{c,Shell}}$",fontsize=fontsize_label)
     k+=1
@@ -77,7 +77,7 @@ ax.xaxis.set_minor_locator(minor_locator_x)
 ax.set_xlim(0,8)
 ax.set_ylim(2.6,4.1)
 plt.subplots_adjust(left=0.07,right=0.98,top=0.98,bottom=0.09)
-ax.legend(loc='upper left', prop={'size': fontsize})
+ax.legend(loc='lower right', prop={'size': fontsize})
 for i in np.arange(len(sys.argv)):
     if sys.argv[i] == "png":
         plt.savefig("../../ownCloud/SS18/BA/Vortrag/Bilder/AI_n_c_by_n_shell_plot.png")

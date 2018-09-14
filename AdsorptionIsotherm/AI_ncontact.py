@@ -44,7 +44,7 @@ for File in files:
     nconplot = np.loadtxt(File, unpack=True)[4]
     ax.plot(epsplot,nconplot,label=r"$N_c={}$".format(nc),
             color=colors[k],dashes=ls_dashes[k],
-            lw=0,ls="", marker=markers[k],ms=15)
+            lw=4,ls="-")#, marker=markers[k],ms=15)
     ax.set_xlabel(r"$-\epsilon$",fontsize=fontsize_label)
     ax.set_ylabel(r"$n_{Kontakte}$",fontsize=fontsize_label)
     k+=1
