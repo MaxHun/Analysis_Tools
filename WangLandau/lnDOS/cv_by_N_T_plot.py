@@ -80,7 +80,7 @@ ax.legend(loc='center right', prop={'size': fontsize})
 
 for i in np.arange(len(sys.argv)):
     if sys.argv[i] == "png":
-        plt.savefig("../../../ownCloud/SS18/BA/Vortrag/Bilder/cV_T_plot.png")
+        plt.savefig("../../../ownCloud/SS18/BA/Vortrag/Bilder/cV_by_N_T_plot.png")
 
 plt.show()
 
