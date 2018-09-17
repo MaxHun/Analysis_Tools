@@ -25,7 +25,7 @@ files=glob.glob("merge_n*.dat")
 files.sort()
 #print(files)
 k=0
-f, ax = plt.subplots(1,1,figsize=(20,10))
+f, ax = plt.subplots(1,1,figsize=(10,10))
 
 def ai(eps,Veff):
     return 0.019*(np.exp(eps))/(Veff+np.exp(eps))
@@ -73,10 +73,10 @@ minor_locator_x = AutoMinorLocator(2)
 ax.xaxis.set_minor_locator(minor_locator_x)
 #ax.yaxis.set_minor_locator(minor_locator_y)
 #plt.yticks(plt.yticks()[0][::2]) # jeden zweiten Tick löschen
-#plt.xticks([0,2,4,6,8])
+plt.xticks([0,2,4,6,8])
 ax.set_xlim(0,8)
 ax.set_ylim(2.6,4.1)
-plt.subplots_adjust(left=0.07,right=0.98,top=0.98,bottom=0.09)
+plt.subplots_adjust(left=0.12,right=0.98,top=0.98,bottom=0.09)
 ax.legend(loc='lower right', prop={'size': fontsize})
 for i in np.arange(len(sys.argv)):
     if sys.argv[i] == "png":

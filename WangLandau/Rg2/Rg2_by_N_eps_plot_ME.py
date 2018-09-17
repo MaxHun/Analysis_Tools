@@ -13,8 +13,8 @@ print("moegliche Uebergaben:\n"+
        "pngwl: Exportiert PNG von ME+WL\n"+
        "im: Exportiert PNG von ME mit snapshot")
 
-fontsize=25
-fontsize_label=28
+fontsize=30
+fontsize_label=33
 matplotlib.rcParams.update({'font.size': fontsize})
 plt.rc('text', usetex=True)
 
@@ -66,8 +66,8 @@ for n in [32.0,64.0,96.0,128.0,256.0,512.0]: #später ncoh die anderen N ergänz
     Tplot_WL, Rg2plot_WL = Tplot_WL[sort_WL], Rg2plot_WL[sort_WL]
     plt.subplot(1,1,1)
     ax=plt.subplot(1,1,1)
-    plt.xlabel(r"$\epsilon_{ME}=\frac{\epsilon_{WL}}{T}$",fontsize=fontsize_label)
-    plt.ylabel(r"$\frac{R_g^2}{N}$",fontsize=fontsize_label)
+    plt.xlabel(r"$\epsilon_{ME}=\epsilon_{WL}\cdot T^{-1}$",fontsize=fontsize_label)
+    plt.ylabel(r"$R_g^2\cdot N^{-1}$",fontsize=fontsize_label)
     plt.ylim(0,4)
     plt.xlim(-1,0)
     ax.yaxis.set_label_coords(-0.015,0.5)
@@ -102,7 +102,7 @@ plt.axvline(x=eps_theta,color="k",ls="--")
 plt.xticks(list(plt.xticks()[0]) + [eps_theta])
 ax.set_xticklabels(["$-1$","$-0,8$","$-0.6$","$-0.4$",
                     "$-0.2$","$0$",r"$\epsilon_\theta$"])
-plt.text(-0.38,3,r"$\epsilon_\theta\simeq {0:.3f}$".format(eps_theta),
+plt.text(-0.39,3,r"$\epsilon_\theta\simeq {0:.3f}$".format(eps_theta),
         fontsize=fontsize_label, bbox=dict(facecolor='none', edgecolor='black', pad=10.0))
 minor_locator_x = AutoMinorLocator(2)
 minor_locator_y = AutoMinorLocator(2)

@@ -13,8 +13,8 @@ print("moegliche Uebergaben:\n"+
        "pngwl: Exportiert PNG von ME+WL\n"+
        "im: Exportiert PNG von ME mit snapshot")
 
-fontsize=28
-fontsize_label=35
+fontsize=30
+fontsize_label=33
 matplotlib.rcParams.update({'font.size': fontsize})
 plt.rc('text', usetex=True)
 
@@ -66,8 +66,8 @@ for n in [32.0,64.0,96.0,128.0,256.0,512.0]: #später ncoh die anderen N ergänz
     Tplot_WL, Rg2plot_WL = Tplot_WL[sort_WL], Rg2plot_WL[sort_WL]
     plt.subplot(1,1,1)
     ax=plt.subplot(1,1,1)
-    plt.xlabel(r"$\epsilon_{ME}=\frac{\epsilon_{WL}}{T}$",fontsize=fontsize_label)
-    plt.ylabel(r"$\frac{R_g^2}{N}$",fontsize=fontsize_label)
+    plt.xlabel(r"$\epsilon_{ME}=\epsilon_{WL}\cdot T^{-1}$",fontsize=fontsize_label)
+    plt.ylabel(r"$R_g^2\cdot N^{-1}$",fontsize=fontsize_label)
     plt.ylim(0,4)
     plt.xlim(-1,0)
     ax.yaxis.set_label_coords(-0.015,0.5)
@@ -96,16 +96,16 @@ for n in [32.0,64.0,96.0,128.0,256.0,512.0]: #später ncoh die anderen N ergänz
     #          position=(0.5,1.01))
     plt.legend(prop={'size': fontsize},loc='best',ncol=3)
     k+=1
-plt.text(-0.8,2,"fontsize: {}\n label fontsize: {}\ngrosse Beschriftung".format(fontsize,fontsize_label))
+#plt.text(-0.8,2,"fontsize: {}\n label fontsize: {}\ngrosse Beschriftung".format(fontsize,fontsize_label))
 eps_theta=-0.249
 plt.axvline(x=eps_theta,color="k",ls="--")
 plt.xticks(list(plt.xticks()[0]) + [eps_theta])
-ax.set_xticklabels(["$-1$","$-0,8$","$-0.6$","$-0.4$",
+ax.set_xticklabels(["$-1$","$-0.8$","$-0.6$","$-0.4$",
                     "$-0.2$","$0$",r"$\epsilon_\theta$"])
-plt.text(-0.4,2.5,r"$\epsilon_\theta\simeq {0:.3f}$".format(eps_theta),
-        fontsize=fontsize_label, bbox=dict(facecolor='none', edgecolor='black', pad=10.0))
-minor_locator_x = AutoMinorLocator(2)
-minor_locator_y = AutoMinorLocator(2)
+plt.text(-0.4,2.3,r"$\epsilon_\theta\simeq {0:.3f}$".format(eps_theta),
+        fontsize=fontsize, bbox=dict(facecolor='none', edgecolor='black', pad=10.0))
+minor_locator_x = AutoMinorLocator(4)
+minor_locator_y = AutoMinorLocator(4)
 ax.xaxis.set_minor_locator(minor_locator_x)
 ax.yaxis.set_minor_locator(minor_locator_y)
 plt.yticks(plt.yticks()[0][::2]) # jeden zweiten Tick löschen
@@ -122,17 +122,17 @@ for i in np.arange(len(sys.argv)):
         save =True
     elif sys.argv[i] == "png":
         plt.text(-0.18, 0.5,r"\textbf{gequollen}",fontsize=fontsize)
-        plt.text(-0.7,2.5,r"\textbf{kollabiert}",fontsize=fontsize)
+        plt.text(-0.7,2,r"\textbf{kollabiert}",fontsize=fontsize)
         plt.savefig("./png_{}_{}.png".format(fontsize,fontsize_label),dpi=300)
         save=True
     elif sys.argv[i] == "pngwl":
         plt.text(-0.18, 0.5,r"\textbf{gequollen}",fontsize=fontsize)
-        plt.text(-0.7,2.5,r"\textbf{kollabiert}",fontsize=fontsize)
+        plt.text(-0.7,2,r"\textbf{kollabiert}",fontsize=fontsize)
         plt.savefig("./pngwl_{}_{}.png".format(fontsize,fontsize_label),dpi=300)
         save=True
 if save==False:
     plt.text(-0.18, 0.5,r"\textbf{gequollen}",fontsize=fontsize)
-    plt.text(-0.7,2.5,r"\textbf{kollabiert}",fontsize=fontsize)
+    plt.text(-0.7,2,r"\textbf{kollabiert}",fontsize=fontsize)
 
 plt.show()
 

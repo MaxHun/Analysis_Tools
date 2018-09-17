@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.5.25)  14 SEP 2018 21:07
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.5.25)  17 SEP 2018 18:17
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1705,17 +1705,31 @@ Package pdftex.def Info: pngwl_28_28.png  used on input line 41.
 
 Underfull \vbox (badness 7326) has occurred while \output is active []
 
- [4 <./png_28_30.png> <./png_30_30.png>] [5 <./pngwl_28_28.png>] (./fs-test.aux
-)
+ [4 <./png_28_30.png> <./png_30_30.png>]
+<Vorschlag_Ron.png, id=74, 1445.4pt x 722.7pt>
+File: Vorschlag_Ron.png Graphic file (type png)
+<use Vorschlag_Ron.png>
+Package pdftex.def Info: Vorschlag_Ron.png  used on input line 46.
+(pdftex.def)             Requested size: 479.17036pt x 239.58345pt.
+<pngwl_30_33.png, id=75, 1445.4pt x 722.7pt>
+File: pngwl_30_33.png Graphic file (type png)
+<use pngwl_30_33.png>
+Package pdftex.def Info: pngwl_30_33.png  used on input line 51.
+(pdftex.def)             Requested size: 479.17036pt x 239.58345pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [5 <./pngwl_28_28.png> <./Vorschlag_Ron.png>] [6 <./pngwl_30_33.png>] (./fs-te
+st.aux)
 Package logreq Info: Writing requests to 'fs-test.run.xml'.
 \openout1 = `fs-test.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 38283 strings out of 492982
- 772540 string characters out of 6134896
+ 38293 strings out of 492982
+ 772738 string characters out of 6134896
  1280036 words of memory out of 5000000
- 41263 multiletter control sequences out of 15000+600000
+ 41271 multiletter control sequences out of 15000+600000
  543088 words of font info for 56 fonts, out of 8000000 for 9000
  1145 hyphenation exceptions out of 8191
  65i,12n,105p,10528b,1580s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1724,10 +1738,10 @@ fonts/type1/public/cm-super/sfbx1095.pfb></usr/share/texmf/fonts/type1/public/c
 m-super/sfrm1095.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb
 ></usr/share/texmf/fonts/type1/public/cm-super/sfrm1728.pfb></usr/share/texmf/f
 onts/type1/public/cm-super/sfsx2488.pfb>
-Output written on fs-test.pdf (5 pages, 2655410 bytes).
+Output written on fs-test.pdf (6 pages, 3381186 bytes).
 PDF statistics:
- 96 PDF objects out of 1000 (max. 8388607)
- 44 compressed objects within 1 object stream
+ 103 PDF objects out of 1000 (max. 8388607)
+ 46 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 202 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 212 words of extra memory for PDF output out of 10000 (max. 10000000)
 
