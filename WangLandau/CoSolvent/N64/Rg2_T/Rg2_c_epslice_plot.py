@@ -62,12 +62,12 @@ for File in files:
     ax.yaxis.set_minor_locator(minor_locator_y)
     
     k+=1    
+f.legend(prop={'size': fontsize},loc="upper center", ncol=int(len(files)/2+0.5))
+plt.yticks(plt.yticks()[0][::2]) # jeden zweiten Tick löschen
+plt.subplots_adjust(left=0.07,right=0.98,top=0.835,bottom=0.08)
 for i in np.arange(len(sys.argv)):
     if sys.argv[i] == "png":
         plt.savefig("../../../../../ownCloud/SS18/BA/Vortrag/Bilder/CNS_Rg2_c_epslice.png")
-plt.yticks(plt.yticks()[0][::2]) # jeden zweiten Tick löschen
-plt.subplots_adjust(left=0.07,right=0.98,top=0.835,bottom=0.08)
-f.legend(prop={'size': fontsize},loc="upper center", ncol=int(len(files)/2+0.5))
 plt.show()
 
 

@@ -52,14 +52,13 @@ for File in files:
     ax.yaxis.set_minor_locator(minor_locator_y)
     
     k+=1    
-
-for i in np.arange(len(sys.argv)):
-    if sys.argv[i] == "png":
-        plt.savefig("../../../../../ownCloud/SS18/BA/Vortrag/Bilder/CNS_psi_T.png")
+f.legend(prop={'size': fontsize},loc="upper right", ncol=1)
 plt.xticks(plt.xticks()[0][::2]) # jeden zweiten Tick löschen
 #plt.yticks(plt.yticks()[0][::2])
 plt.subplots_adjust(left=0.07,right=0.835,top=0.98,bottom=0.10)
-f.legend(prop={'size': fontsize},loc="upper right", ncol=1)
+for i in np.arange(len(sys.argv)):
+    if sys.argv[i] == "png":
+        plt.savefig("../../../../../ownCloud/SS18/BA/Vortrag/Bilder/CNS_psi_T.png")
 plt.show()
 
 

@@ -77,12 +77,13 @@ if epslice:
                delimiter= "            ", fmt="%07.6f",
                header="c       Rg2")
 ############
+plt.legend(prop={'size': fontsize},loc="lower right", ncol=2)
+plt.yticks(plt.yticks()[0][::2]) # jeden zweiten Tick löschen
+plt.subplots_adjust(left=0.07,right=0.98,top=0.98,bottom=0.10)
 for i in np.arange(len(sys.argv)):
     if sys.argv[i] == "png":
         plt.savefig("../../../../../ownCloud/SS18/BA/Vortrag/Bilder/CNS_Rg2_T.png")
-plt.yticks(plt.yticks()[0][::2]) # jeden zweiten Tick löschen
-plt.subplots_adjust(left=0.07,right=0.98,top=0.98,bottom=0.10)
-plt.legend(prop={'size': fontsize},loc="lower right", ncol=2)
+
 plt.show()
 
 
