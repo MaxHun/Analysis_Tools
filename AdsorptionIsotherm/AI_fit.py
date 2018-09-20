@@ -49,7 +49,7 @@ for File in files:
         if sys.argv[n]=="dat":
             data = np.transpose(np.array([nisplot,epsplot]))
             np.savetxt("n_c_shell_eps_Nc{}.dat".format(nc), data, delimiter= "             ", fmt="%-1.8f",
-                       header="<nCoS In NNShell>             epsilon")
+                       header="<nCoS In NNShell>             -epsilon")
     #try to fit the data:
     popt, pcov = curve_fit(ai, epsplot, nisplot/np.amax(nisplot))
     plt.plot(epsplot, np.amax(nisplot)*ai(epsplot, *popt), 
