@@ -34,15 +34,10 @@ for File in files:
     phiflucplot = np.loadtxt(File, unpack=True)[1]
     epsplot = eps_WL/Tplot
     c=float(File[-9:-4])
-  
+
     ax.plot(epsplot, phiflucplot,color=colors[k%len(colors)], alpha=0.6, 
             dashes=ls_dashes[k%len(ls_dashes)], label=r"$c={}$".format(c),
             lw=3)
-    ################Maximum und Nebenmaximum finden für c=0.003############
-    if c==0.003:
-        #plt.axvline(x=epsplot[240])
-        i=1
-
     plt.xlabel(r"$\epsilon_{ME}=\epsilon_{WL}\cdot T^{-1}$",fontsize=fontsize_label)
     plt.ylabel(r"$-\frac{\diff\phi}{\diff T}$",fontsize=fontsize_label)
     #plt.xlim(10**-3,10**0)
@@ -51,7 +46,7 @@ for File in files:
     ax.tick_params(right=True, direction='in',which='both')
     ax.tick_params(left=True,right=True,bottom=True,top=True,which='minor',length=5)
     #plt.ylim(0,1)
-    plt.xlim(-1,-0.4)
+    plt.xlim(-5,0)
     ax.tick_params(axis='x', pad=10)
     ax.tick_params(axis='y', pad=10)
     minor_locator_x = AutoMinorLocator(5)
@@ -62,7 +57,7 @@ for File in files:
     k+=1    
 f.legend(prop={'size': fontsize},loc="upper right", ncol=1)
 #plt.xticks(plt.xticks()[0][::2]) # jeden zweiten Tick löschen
-plt.subplots_adjust(left=0.13,right=0.96,top=0.98,bottom=0.10)
+plt.subplots_adjust(left=0.07,right=0.835,top=0.98,bottom=0.10)
 for i in np.arange(len(sys.argv)):
     if sys.argv[i] == "png":
         plt.savefig("../../../../../ownCloud/SS18/BA/Vortrag/Bilder/CNS_phi_fluc_T.png")

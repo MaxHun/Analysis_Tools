@@ -27,7 +27,7 @@ ls_dashes = np.array([[3,3,1,1],[1,1],[1,3,3,1],[2,4,2,4,2,8],[2,2,10,2],[],[4,4
 files = glob.glob("Phi_fluc_T*.dat")
 files.sort()
 eps_WL=-0.4
-f, ax =plt.subplots(1,1, figsize=(20,10))
+f, ax =plt.subplots(1,1, figsize=(10,10))
 k=0
 for File in files:
     Tplot = np.loadtxt(File, unpack=True)[0]
@@ -41,8 +41,11 @@ for File in files:
     ################Maximum und Nebenmaximum finden für c=0.003############
     if c==0.003:
         #plt.axvline(x=epsplot[240])
-        i=1
-
+        nebenmax=-0.8335#np.argmax(epsplot[200:240])
+        hauptmax=-0.755
+        #plt.axvline(x=epsplot[nebenmax+200])
+        ax.arrow(nebenmax, 6, 0,-2, head_width=0.02, head_length=1, fc='violet', ec='violet',lw=3)
+        ax.arrow(hauptmax, 21.5, 0,-2, head_width=0.02, head_length=1, fc='k', ec='k',lw=3)
     plt.xlabel(r"$\epsilon_{ME}=\epsilon_{WL}\cdot T^{-1}$",fontsize=fontsize_label)
     plt.ylabel(r"$-\frac{\diff\phi}{\diff T}$",fontsize=fontsize_label)
     #plt.xlim(10**-3,10**0)
@@ -60,12 +63,12 @@ for File in files:
     ax.yaxis.set_minor_locator(minor_locator_y)
     
     k+=1    
-f.legend(prop={'size': fontsize},loc="upper right", ncol=1)
+#f.legend(prop={'size': fontsize},loc="upper right", ncol=1)
 #plt.xticks(plt.xticks()[0][::2]) # jeden zweiten Tick löschen
-plt.subplots_adjust(left=0.13,right=0.96,top=0.98,bottom=0.10)
+plt.subplots_adjust(left=0.07,right=0.835,top=0.98,bottom=0.10)
 for i in np.arange(len(sys.argv)):
     if sys.argv[i] == "png":
-        plt.savefig("../../../../../ownCloud/SS18/BA/Vortrag/Bilder/CNS_phi_fluc_T.png")
+        plt.savefig("../../../../../ownCloud/SS18/BA/Vortrag/Bilder/CNS_phi_fluc_T_subfig.png")
 plt.show()
 
 
