@@ -25,7 +25,7 @@ files=glob.glob("merge_n*.dat")
 files.sort()
 #print(files)
 k=0
-f, ax = plt.subplots(1,1,figsize=(20,10))
+f, ax = plt.subplots(1,1,figsize=(20,12))
 
 def ai(eps,Veff, fak):
     return (np.exp(fak*eps))/(Veff+np.exp(fak*eps))
@@ -60,28 +60,24 @@ for File in files:
     popt, pcov = curve_fit(ai_somm, epsplot, gamma )
     plt.plot(epsplot, ai_somm(epsplot, *popt), 
             #label=r"$\alpha={:.5f}$, $f={:.1f}$".format(popt[0],popt[1]),
-            label=r"$\alpha={:.5f}$, $f=3.3$".format(popt[0]),
-            #label="Fit",
+            #label=r"$\alpha={:.5f}$, $f=3.3$".format(popt[0]),
+            label="Fit",
             color=colors[k])
     #print(popt)
     k+=1
 ax.tick_params(left=True,right=True,bottom=True,top=True,which='major',length=10)
 ax.tick_params(right=True, direction='in',which='both')    
 ax.tick_params(left=True,right=True,bottom=True,top=True,which='minor',length=5)
-minor_locator_x = AutoMinorLocator(2)
-minor_locator_y = AutoMinorLocator(2)
-ax.xaxis.set_minor_locator(minor_locator_x)
-ax.yaxis.set_minor_locator(minor_locator_y)
 #ax.set_xticklabels(["$-1$","$-0,8$","$-0.6$","$-0.4$",
 #                    "$-0.2$","$0$",r"$\epsilon_\theta$"])
 plt.text(3.8,0.6,
         r"Fitfunktion: $\frac{\Gamma}{(1-\Gamma)(\frac{N_c}{N_{max}}-\Gamma)}=\alpha\exp(f\cdot\vert\epsilon\vert)$",
-        fontsize=fontsize_label)
-minor_locator_x = AutoMinorLocator(2)
-#minor_locator_y = AutoMinorLocator(2)
+        fontsize=fontsize_label+5)
+minor_locator_x = AutoMinorLocator(4)
+minor_locator_y = AutoMinorLocator(4)
 ax.xaxis.set_minor_locator(minor_locator_x)
-#ax.yaxis.set_minor_locator(minor_locator_y)
-#plt.xticks(plt.yticks()[0][::2]) # jeden zweiten Tick löschen
+ax.yaxis.set_minor_locator(minor_locator_y)
+plt.xticks(plt.yticks()[0][::2]) # jeden zweiten Tick löschen
 plt.xticks([0,2,4,6,8])
 ax.set_xlim(0,8)
 ax.set_ylim(0,1.2)#400)
@@ -89,6 +85,6 @@ plt.subplots_adjust(left=0.07,right=0.98,top=0.98,bottom=0.09)
 ax.legend(loc='upper center', prop={'size': fontsize}, ncol=4)
 for i in np.arange(len(sys.argv)):
     if sys.argv[i] == "png":
-        plt.savefig("../../ownCloud/SS18/BA/Vortrag/Bilder/AI_n_c_shell_plot_fit.png")
+        plt.savefig("../../ownCloud/SS18/BA/Vortrag/Bilder/AI_gamma_fit_fixes_f.png")
 plt.show()
 
