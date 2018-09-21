@@ -48,12 +48,11 @@ for File in files:
         ax.arrow(hauptmax, 21.5, 0,-2, head_width=0.02, head_length=1, fc='k', ec='k',lw=3)
     plt.xlabel(r"$\epsilon_{ME}=\epsilon_{WL}\cdot T^{-1}$",fontsize=fontsize_label)
     plt.ylabel(r"$-\frac{\diff\phi}{\diff T}$",fontsize=fontsize_label)
-    #plt.xlim(10**-3,10**0)
     #ax.yaxis.set_label_coords(-0.05,0.5)
     ax.tick_params(left=True,right=True,bottom=True,top=True,which='major',length=10)
     ax.tick_params(right=True, direction='in',which='both')
     ax.tick_params(left=True,right=True,bottom=True,top=True,which='minor',length=5)
-    #plt.ylim(0,1)
+    plt.ylim(0,25)
     plt.xlim(-1,-0.4)
     ax.tick_params(axis='x', pad=10)
     ax.tick_params(axis='y', pad=10)
@@ -65,7 +64,7 @@ for File in files:
     k+=1    
 #f.legend(prop={'size': fontsize},loc="upper right", ncol=1)
 #plt.xticks(plt.xticks()[0][::2]) # jeden zweiten Tick löschen
-plt.subplots_adjust(left=0.07,right=0.835,top=0.98,bottom=0.10)
+plt.subplots_adjust(left=0.13,right=0.96,top=0.98,bottom=0.10)
 for i in np.arange(len(sys.argv)):
     if sys.argv[i] == "png":
         plt.savefig("../../../../../ownCloud/SS18/BA/Vortrag/Bilder/CNS_phi_fluc_T_subfig.png")
