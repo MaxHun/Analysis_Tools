@@ -6,8 +6,8 @@ import sys
 import matplotlib
 from matplotlib.ticker import (MultipleLocator, FormatStrFormatter,
                                AutoMinorLocator)
-fontsize=25
-fontsize_label=28
+fontsize=30
+fontsize_label=33
 
 
 matplotlib.rcParams.update({'font.size': fontsize})
@@ -56,8 +56,9 @@ for e in [-0.4]:
     plt.subplot(1,1,1)
     ax=plt.subplot(1,1,1)
     #ax.grid()
-    plt.xlabel(r'$c_{Col"osungsmittel}$',fontsize=28)
-    plt.ylabel(r"$R_g^2$",fontsize=28)
+    #plt.xlabel(r'$c_{Col"osungsmittel}$',fontsize=35)
+    plt.xlabel(r'$c_c$', fontsize=38)
+    plt.ylabel(r"$R_g^2$",fontsize=38)
     #plt.xlim(10**-3,10**0)
     #ax.yaxis.set_label_coords(-0.05,0.5)
     a=0.3
@@ -77,7 +78,7 @@ for e in [-0.4]:
     ax.imshow(img, aspect='auto',extent=(0.0,1,0.1,1.1))
 
     plt.text(0.05,0.85,r"\textbf{gequollen}")
-    plt.text(0.34,0.3,r"\textbf{kollabiert}")
+    plt.text(0.30,0.3,r"\textbf{kollabiert}")
     plt.text(0.75,0.6,r"\textbf{gequollen}")
     ax.tick_params(left=True,right=True,bottom=True,top=True,which='major',length=0)
     ax.tick_params(right=True, direction='in',which='both')
@@ -134,7 +135,7 @@ ax.arrow(xmin, 0, xmax-xmin, 0., fc='k', ec='k', lw = lw,
 ax.arrow(xmin, ymin, 0., ymax-ymin, fc='k', ec='k', lw = lw, 
          head_width=yhw, head_length=yhl, overhang = ohg, 
          length_includes_head= True, clip_on = False) 
- 
+plt.subplots_adjust(left=0.075) 
 for i in np.arange(len(sys.argv)):
     if sys.argv[i] == "png":
         plt.savefig("../../../ownCloud/SS18/BA/Vortrag/Bilder/Rg2_c_plot_Skizze.png", dpi=300)        
