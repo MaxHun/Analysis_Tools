@@ -7,8 +7,8 @@ import matplotlib
 from matplotlib.ticker import (MultipleLocator, FormatStrFormatter,
                                AutoMinorLocator)
 import glob
-fontsize=25
-fontsize_label=28
+fontsize=30
+fontsize_label=33
 
 matplotlib.rcParams.update({'font.size': 25})
 plt.rc('text', usetex=True)
@@ -37,7 +37,8 @@ for File in files:
     
     plt.subplot(1,1,1)
     ax=plt.subplot(1,1,1)
-    plt.xlabel(r"$\frac{E}{|\epsilon |N}$",fontsize=fontsize_label)
+    #plt.xlabel(r"$\frac{E}{|\epsilon |N}$",fontsize=fontsize_label)
+    plt.xlabel(r"$E \vert\epsilon\vert^{-1}N^{-1}$", fontsize=fontsize_label)
     plt.ylabel(r"$\ln(\nicefrac{g(E)}{g(0)})$",fontsize=fontsize_label)
     ax.yaxis.set_label_coords(-0.05,0.5)
 #  # plt.plot(Eplot,lndosplot, label="N={}".format(int(n)),
@@ -55,15 +56,27 @@ for File in files:
     #          r" $\epsilon=-0.4$")
     plt.legend(prop={'size': fontsize},loc="lower right")
     #k+=1
+#print(type(plt.xticks()))
+
+#ax.set_xticks(tuple((0,-3,-6,-9)))
 ax.tick_params(left=True,right=True,bottom=True,top=True,which='major',length=10)
 ax.tick_params(right=True, direction='in',which='both')
 ax.tick_params(left=True,right=True,bottom=True,top=True,which='minor',length=5)
-minor_locator_x = AutoMinorLocator(2)
-minor_locator_y = AutoMinorLocator(2)
+major_locator_x = MultipleLocator(3)
+major_locator_y = MultipleLocator(100)
+
+minor_locator_x = AutoMinorLocator(3)
+minor_locator_y = AutoMinorLocator(4)
 ax.xaxis.set_minor_locator(minor_locator_x)
 ax.yaxis.set_minor_locator(minor_locator_y)
-plt.yticks(plt.yticks()[0][::2]) #jeden zweiten Tick löschen
-plt.subplots_adjust(left=0.09,right=0.98,top=0.98,bottom=0.09)
+ax.xaxis.set_major_locator(major_locator_x)
+ax.yaxis.set_major_locator(major_locator_y)
+
+
+
+
+
+plt.subplots_adjust(left=0.10,right=0.98,top=0.98,bottom=0.10)
 for i in np.arange(len(sys.argv)):
     if sys.argv[i] == "png":
         plt.savefig("../../../ownCloud/SS18/BA/Vortrag/Bilder/iterationen_lng_E_by_N_plot.png")

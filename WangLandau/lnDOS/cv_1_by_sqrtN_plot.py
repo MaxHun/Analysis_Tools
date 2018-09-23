@@ -12,8 +12,8 @@ plt.rc('text', usetex=True)
 plt.rc('font', family='Open Sans')
 
 
-fontsize=25
-fontsize_label=28
+fontsize=30
+fontsize_label=33 #Größe schon geändert, Rest noch anpassen!!
 
 
 matplotlib.rcParams.update({'font.size': fontsize})
