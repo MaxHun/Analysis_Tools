@@ -115,17 +115,22 @@ for n in [32.0,64.0,96.0,128.0,256.0,512.0]:
 #f.suptitle(r"Wärmekapazitäten unterschiedlich langer Einzelketten,"+
 #           " auf Maximum normiert\n"+
 #           r"bei gleicher Wechselwirkungsenergie $\epsilon=-0.4$")
-    plt.subplots_adjust(wspace=0.075, hspace=0.05, top=0.99,bottom=0.07,
+    plt.subplots_adjust(wspace=0.075, hspace=0.05, top=0.88,bottom=0.04,
                     left=0.07,right=0.98)
     #plt.yticks([0,0.2,0.4,0.6,0.8,1])  #plt.yticks()[0][::2])
     #plt.xticks([0,1,2,3])  #plt.xticks()[0][::2])
     plt.ylim(0,1.1)
-#f.legend(loc='upper center', prop={'size': fontsize},ncol=3)
+f.legend(loc='upper center', prop={'size': fontsize},ncol=3)
 #matplotlib.pyplot.tight_layout(w_pad=0.12)
 for i in np.arange(len(sys.argv)):
     if sys.argv[i] == "png" and WL_only==True:
         plt.savefig("../../../ownCloud/SS18/BA/Vortrag/Bilder/cV_T_plot_WL_Arbeit.png")
     elif sys.argv[i] == "png" and WL_only==False:
-        plt.savefig("../../../ownCloud/SS18/BA/Vortrag/Bilder/cV_T_plot_ME+WL_Arbeit_nolegend.png")
-#plt.show()
+        plt.savefig("../../../ownCloud/SS18/BA/Vortrag/Bilder/cV_T_plot_ME+WL_Arbeit_legend.png")
+import matplotlib.image as mpimg
 
+img = mpimg.imread('../../../ownCloud/SS18/BA/Vortrag/Bilder/cV_T_plot_ME+WL_Arbeit_legend.png')
+plt.close()
+plt.figure(figsize=(20,20))
+plt.imshow(img)
+plt.show()
