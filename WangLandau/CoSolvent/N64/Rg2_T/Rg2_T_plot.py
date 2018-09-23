@@ -12,14 +12,16 @@ from matplotlib import colors, cm
 fontsize=30
 fontsize_label=33
 
-
+exec(open("/home/max/Analysis_Tools/colorsetc.py").read())
 matplotlib.rcParams.update({'font.size': fontsize})
 plt.rc('text', usetex=True)
 plt.rc('font', family='serif')
-colors = np.array(["b","r","g","c","m","darkorange","k"])
-markers = np.array(["o","v","s","+","*","p","x"])
-linestyles = np.array([":","-.","--","-"])
-ls_dashes = np.array([[3,3,1,1],[1,1],[1,3,3,1],[2,4,2,4,2,8],[2,2,10,2],[],[4,4,2,2],[3,1,3,1],[2,4,4,2],[5,1,5,1],[7,1,7,1],[7,3,7,3],[3,1,1,1,1,1]])
+#colors = np.array(["b","r","g","c","m","darkorange","k"])
+#markers = np.array(["o","v","s","+","*","p","x"])
+#linestyles = np.array([":","-.","--","-"])
+#ls_dashes = np.array([[3,3,1,1],[1,1],[1,3,3,1],[1,1,3,1,1,1,1,1,1,1,3,1],
+#                     [2,2,10,2],[],[4,4,2,2],[3,1,3,1],[2,3,5,2],[5,1,5,1],
+ #                    [7,1,7,1],[3,1,3,1,1,1],[3,1,1,1,1,1]])
 #print(files)
 files = glob.glob("Rg2_T*.dat")
 files.sort()

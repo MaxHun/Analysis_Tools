@@ -9,8 +9,8 @@ from matplotlib.ticker import (MultipleLocator, FormatStrFormatter,
 import matplotlib
 import matplotlib.patches as mpatch
 
-fontsize=28
-fontsize_label=30
+fontsize=30
+fontsize_label=33
 matplotlib.rcParams.update({'font.size': fontsize})
 plt.rc('text', usetex=True)
 plt.rc('font', family='Open Sans')

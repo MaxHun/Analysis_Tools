@@ -7,10 +7,10 @@ import matplotlib
 from matplotlib.ticker import (MultipleLocator, FormatStrFormatter,
                                AutoMinorLocator)
 
-fontsize=25
-fontsize_label=28
+fontsize=30
+fontsize_label=33
 
-matplotlib.rcParams.update({'font.size': 25})
+matplotlib.rcParams.update({'font.size': fontsize})
 plt.rc('text', usetex=True)
 plt.rc('font', family='Open Sans')
 matplotlib.rcParams['text.latex.preamble'] = [
@@ -24,10 +24,12 @@ E = np.loadtxt(file, unpack=True)[1]
 eps =np.loadtxt(file, unpack=True)[3]
 k=int(0.0)
 plt.figure(figsize=(20,10))
-colors = np.array(["b","r","g","c","m","darkorange","k"])
-markers = np.array(["o","v","s","+","*","p","x"])
-linestyles = np.array([":","-.","--","-"])
-ls_dashes = np.array([[3,6,3,6,3,18],[1,1],[12,6,3,6,3,6],[2,4,2,4,2,8],[2,2,10,2],[]])
+
+exec(open("/home/max/Analysis_Tools/colorsetc.py").read())
+#colors = np.array(["b","r","g","c","m","darkorange","k"])
+#markers = np.array(["o","v","s","+","*","p","x"])
+#linestyles = np.array([":","-.","--","-"])
+#ls_dashes = np.array([[3,6,3,6,3,18],[1,1],[12,6,3,6,3,6],[2,4,2,4,2,8],[2,2,10,2],[]])
 for n in [32.0,64.0,96.0,128.0,256.0,512.0]: 
     lndosplot = np.array([])
     Eplot = np.array([])
@@ -42,15 +44,15 @@ for n in [32.0,64.0,96.0,128.0,256.0,512.0]:
 
     plt.subplot(1,1,1)
     ax=plt.subplot(1,1,1)
-    plt.xlabel(r"$\frac{E}{N}$",fontsize=fontsize_label)
+    plt.xlabel(r"$E\cdot N^{-1}$",fontsize=fontsize_label)
     plt.ylabel(r"$\ln(\nicefrac{g(E)}{g(0)})$",fontsize=fontsize_label)
     ax.yaxis.set_label_coords(-0.05,0.5)
    # plt.plot(Eplot,lndosplot, label="N={}".format(int(n)),
    #          color=colors[k],marker=markers[k])
-    plt.plot(Eplot,lndosplot,alpha=1, color=colors[k],
-            dashes=ls_dashes[k]
+    plt.plot(Eplot,lndosplot,alpha=1, color=colors[k]
+            ,dashes=ls_dashes[k]
             ,label="N={}".format(int(n)),lw=3)
-    plt.xlim(-2.5,0)
+    plt.xlim(-3,0)
     plt.ylim(-200,400)
 
     #plt.title(r"Zustandsdichten der linearen Kette für unterschiedliche"+ 
@@ -62,7 +64,7 @@ for n in [32.0,64.0,96.0,128.0,256.0,512.0]:
 ax.tick_params(left=True,right=True,bottom=True,top=True,which='major',length=10)
 ax.tick_params(right=True, direction='in',which='both')
 ax.tick_params(left=True,right=True,bottom=True,top=True,which='minor',length=5)
-minor_locator_x = AutoMinorLocator(2)
+minor_locator_x = AutoMinorLocator(5)
 minor_locator_y = AutoMinorLocator(2)
 ax.xaxis.set_minor_locator(minor_locator_x)
 ax.yaxis.set_minor_locator(minor_locator_y)

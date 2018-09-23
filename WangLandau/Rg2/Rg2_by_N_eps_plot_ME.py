@@ -81,8 +81,10 @@ for n in [32.0,64.0,96.0,128.0,256.0,512.0]: #später ncoh die anderen N ergänz
              color=colors[k],marker=markers[k],ms=15,ls="",fillstyle='none')
             ME_only=False
     if ME_only:        
-        plt.plot(epsplot,Rg2plot/n, label="ME: $N={}$".format(int(n)),
+        plt.plot(epsplot,Rg2plot/n, label="$N={}$".format(int(n)),
              color=colors[k],marker=markers[k],ms=15,dashes=ls_dashes[k])#ls="",fillstyle='none')
+        plt.xlabel(r"$\epsilon$")
+        
     #if n == 512:
     #    plt.plot(epsplot[12],Rg2plot[12]/n,color="k",marker=markers[k],ms=15)
     #plt.plot(epsplot,Rg2plot,alpha=0.6, color=colors[k])
@@ -102,14 +104,14 @@ plt.axvline(x=eps_theta,color="k",ls="--")
 plt.xticks(list(plt.xticks()[0]) + [eps_theta])
 ax.set_xticklabels(["$-1$","$-0,8$","$-0.6$","$-0.4$",
                     "$-0.2$","$0$",r"$\epsilon_\theta$"])
-plt.text(-0.39,3,r"$\epsilon_\theta\simeq {0:.3f}$".format(eps_theta),
+plt.text(-0.39,2.3,r"$\epsilon_\theta\simeq {0:.3f}$".format(eps_theta),
         fontsize=fontsize_label, bbox=dict(facecolor='none', edgecolor='black', pad=10.0))
-minor_locator_x = AutoMinorLocator(2)
-minor_locator_y = AutoMinorLocator(2)
+minor_locator_x = AutoMinorLocator(4)
+minor_locator_y = AutoMinorLocator(4)
 ax.xaxis.set_minor_locator(minor_locator_x)
 ax.yaxis.set_minor_locator(minor_locator_y)
 plt.yticks(plt.yticks()[0][::2]) # jeden zweiten Tick löschen
-plt.subplots_adjust(left=0.07,right=0.98,top=0.98,bottom=0.09)
+plt.subplots_adjust(left=0.05,right=0.98,top=0.98,bottom=0.09)
 save=False
 for i in np.arange(len(sys.argv)):
     if sys.argv[i] == "im":
@@ -127,7 +129,7 @@ for i in np.arange(len(sys.argv)):
         save=True
     elif sys.argv[i] == "pngwl":
         plt.text(-0.18, 0.5,r"\textbf{gequollen}",fontsize=fontsize_label)
-        plt.text(-0.7,2.5,r"\textbf{kollabiert}",fontsize=fontsize_label)
+        plt.text(-0.7,2.2,r"\textbf{kollabiert}",fontsize=fontsize_label)
         plt.savefig("../../../ownCloud/SS18/BA/Vortrag/Bilder/Rg2_by_N_eps_ME+WL_plot.png",dpi=300)
         save=True
 if save==False:

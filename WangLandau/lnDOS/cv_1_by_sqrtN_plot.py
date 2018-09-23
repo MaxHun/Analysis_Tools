@@ -10,6 +10,9 @@ import matplotlib.patches as mpatch
 
 plt.rc('text', usetex=True)
 plt.rc('font', family='Open Sans')
+matplotlib.rcParams['text.latex.preamble'] = [
+    r'\usepackage{amsmath}',
+    r'\usepackage{amssymb}',r"\usepackage{nicefrac}"]
 
 
 fontsize=30
@@ -31,7 +34,7 @@ ax=plt.subplot(111)
 ax.tick_params(left=True,right=True,bottom=True,top=True,which='major',length=10)
 ax.tick_params(right=True, direction='in',which='both')    
 ax.tick_params(left=True,right=True,bottom=True,top=True,which='minor',length=5)
-minor_locator_x = AutoMinorLocator(2)
+minor_locator_x = AutoMinorLocator(5)
 minor_locator_y = AutoMinorLocator(2)
 ax.xaxis.set_minor_locator(minor_locator_x)
 ax.yaxis.set_minor_locator(minor_locator_y)
@@ -39,7 +42,7 @@ ax.yaxis.set_minor_locator(minor_locator_y)
 
 plt.plot(invsqrtn,T_theta,'o',ms=15)
 plt.plot(x,m*x+n,color="k",ls="--",label="Fitfunktion:"+r" $T_{\theta}=$"+
-                                 "${0:.3f}$".format(m)+r"$\cdot\frac{1}{\sqrt{N}}+$"+
+                                 "${0:.3f}$".format(m)+r"$\cdot N^{-\nicefrac{1}{2}}+$"+
                                  "${0:.3f}$".format(n))
 #plt.title("Temperatur des coil-globule-\nPhasenübergangs für verschiedene Kettenlängen",
 #          fontsize=18)
@@ -54,19 +57,19 @@ ytl[-1]=r"$T_\theta^\infty$"
 ax.set_yticks(yt)
 ax.set_yticklabels(ytl)
 
-plt.text(0.128,1.4,r"$\epsilon_\theta=\frac{\epsilon}{T_\theta^\infty}\simeq -0.254$",
+plt.text(0.128,1.4,r"$\epsilon_\theta=\frac{\epsilon_{WL}}{T_\theta^\infty}\simeq -0.254$",
          fontsize=fontsize_label, bbox=dict(facecolor='none', edgecolor='none', pad=18), va='bottom')
 
 plt.xticks([0,0.05,0.1,0.15,0.2])
 ax.set_xticklabels(["$0$","$0.05$","$0.1$","$0.15$","$0.2$"])
-plt.ylabel(r"$T_{\theta}$",fontsize=fontsize)
-plt.xlabel(r"$\frac{1}{\sqrt{N}}$",fontsize=fontsize)
+plt.ylabel(r"$T_{\theta}$",fontsize=fontsize_label)
+plt.xlabel(r"$N^{-\nicefrac{1}{2}}$",fontsize=fontsize_label)
 plt.legend(loc='lower center',prop={'size':fontsize})
-plt.subplots_adjust(left=0.07,top=0.985, right=0.97,bottom=0.09)
+plt.subplots_adjust(left=0.06,top=0.985, right=0.98,bottom=0.1)
 
 ###EXPERIMENT###
 
-rectangles = {r"" : mpatch.Rectangle((0.1255,1.39), 0.035,0.08,facecolor="none",edgecolor="k")}
+rectangles = {r"" : mpatch.Rectangle((0.1255,1.39), 0.041,0.10,facecolor="none",edgecolor="k")}
 
 for r in rectangles:
     ax.add_artist(rectangles[r])
